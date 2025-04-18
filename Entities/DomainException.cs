@@ -1,6 +1,5 @@
-    class DomainException : ApplicationException
-    {
-        public DomainException(string message) : base(message)
-        {
-        }
+class DomainException : ApplicationException {
+    public DomainException(string message) : base(message) {
+
     }
+}

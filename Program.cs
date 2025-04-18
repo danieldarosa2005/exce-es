@@ -12,15 +12,39 @@ double saldoi = double.Parse(Console.ReadLine());
 
 System.Console.Write("Limite: ");
 double limite = double.Parse(Console.ReadLine());
-Account account = new Account(numero, titular, saldoi, limite);
+Conta conta = new Conta(numero, titular, saldoi, limite);
 
-System.Console.Write("VALOR DO SAQUE: ");
-double saque = double.Parse(Console.ReadLine());
+System.Console.WriteLine("Você deseja SACAR (s) ou DEPOSITAR (d)?");
+char escolha = char.Parse(Console.ReadLine());
 
-try{
-    account.Saque(saque);
-    System.Console.Write(account.ToString());
+if (escolha == 's')
+{
+    System.Console.Write("Valor do saque: ");
+    double saque = double.Parse(Console.ReadLine());
+
+try {
+    conta.Saque(saque);
+    System.Console.Write(conta.ToString());
 }
 catch (DomainException e) {
     System.Console.WriteLine("Erro! " + e.Message);
 }
+} 
+else if (escolha == 'd')
+{
+    System.Console.Write("Valor do depósito: ");
+    double deposito = double.Parse(Console.ReadLine());
+
+try {
+    conta.Deposito(deposito);
+    System.Console.Write(conta.ToString());
+    }
+    catch (DomainException d) {
+        System.Console.WriteLine("Erro! " + d.Message);
+    }  
+}
+else
+{
+    System.Console.WriteLine("Dígito errado!");
+}
+
